@@ -1,7 +1,7 @@
 // Centralized API Client for Ivy Homes
 
-export const API_BASE = 'https://solve.ivy.homes';
-export const API_KEY = 'IVY26-FECF9FEEEF8C';
+export const API_BASE = import.meta.env.VITE_API_BASE || 'https://solve.ivy.homes';
+export const API_KEY  = import.meta.env.VITE_API_KEY  || 'IVY26-FECF9FEEEF8C';
 
 export const DEMO_USERS = [
   { email: 'demo1@ivy.homes', label: 'Demo User 1' },
@@ -9,7 +9,7 @@ export const DEMO_USERS = [
   { email: 'demo3@ivy.homes', label: 'Demo User 3' },
 ];
 
-export const DEMO_PASSWORD = 'dee4ea5948';
+export const DEMO_PASSWORD = import.meta.env.VITE_DEMO_PASSWORD || 'dee4ea5948';
 
 /**
  * Executes an authenticated API request with auto-retry on 401 if refresh token is available.
