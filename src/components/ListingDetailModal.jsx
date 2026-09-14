@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, MapPin, Bed, Bath, Maximize2, Compass, Car, Phone, User, ShieldCheck, Bookmark, Share2, Check, ExternalLink, Building2 } from 'lucide-react';
+import { X, MapPin, Bed, Bath, Maximize2, Compass, Car, Phone, User, ShieldCheck, Bookmark, Share2, Check, ExternalLink, Building2, AlertTriangle } from 'lucide-react';
 import { formatINR, capitalize } from '../utils/format';
 
 export default function ListingDetailModal({ listing, isSaved, onToggleSave, onClose, onSelectProject }) {
@@ -36,7 +36,7 @@ export default function ListingDetailModal({ listing, isSaved, onToggleSave, onC
     listing_url
   } = listing;
 
-  const pricePerSqft = carpet_area > 0 && price > 0 ? Math.round(price / carpet_area) : null;
+  const pricePerSqft = carpet_area > 0 && price !== 0 ? Math.round(Math.abs(price) / carpet_area) : null;
 
   const handleCopyLink = () => {
     const url = `${window.location.origin}${window.location.pathname}#/listings/${listing_id}`;

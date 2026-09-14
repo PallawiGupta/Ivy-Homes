@@ -2,18 +2,17 @@
  * Formats a number into Indian Rupee notation (Cr, Lakh, or thousands).
  */
 export function formatINR(val) {
-  if (val === null || val === undefined || isNaN(val)) return '₹0';
-  const num = Number(val);
-  const abs = Math.abs(num);
-  const sign = num < 0 ? '-' : '';
+  if (val === null || val === undefined || isNaN(val)) return 'Price on Request';
+  const num = Math.abs(Number(val));
+  if (num === 0) return 'Price on Request';
 
-  if (abs >= 10000000) {
-    return `${sign}₹${(abs / 10000000).toFixed(2)} Cr`;
+  if (num >= 10000000) {
+    return `₹${(num / 10000000).toFixed(2)} Cr`;
   }
-  if (abs >= 100000) {
-    return `${sign}₹${(abs / 100000).toFixed(2)} Lakh`;
+  if (num >= 100000) {
+    return `₹${(num / 100000).toFixed(2)} Lakh`;
   }
-  return `${sign}₹${abs.toLocaleString('en-IN')}`;
+  return `₹${num.toLocaleString('en-IN')}`;
 }
 
 /**

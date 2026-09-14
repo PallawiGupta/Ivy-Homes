@@ -20,7 +20,7 @@ export default function ListingCard({ listing, isSaved, onToggleSave, onSelect }
     website
   } = listing;
 
-  const pricePerSqft = carpet_area > 0 && price > 0 ? Math.round(price / carpet_area) : null;
+  const pricePerSqft = carpet_area > 0 && price !== 0 ? Math.round(Math.abs(price) / carpet_area) : null;
 
   return (
     <div className="property-card" onClick={() => onSelect(listing)}>
